@@ -1,9 +1,12 @@
 package com.practice.addressbook;
+
 import java.util.*;
+
 public class AddressBookList {
 	Scanner in = new Scanner(System.in);
 	Map<String, AddressBook> addressBookMap = new TreeMap<>();
-    ArrayList<AddressBook> addressList = new ArrayList<>();
+	ArrayList<AddressBook> addressList = new ArrayList<>();
+
 	public AddressBookList() {
 		addressBookMap = new TreeMap<>();
 	}
@@ -37,7 +40,11 @@ public class AddressBookList {
 					break;
 				else
 					System.out.println("Please Enter Correct Choice");
-
+				System.out.println("Enter 1 to add contact");
+				System.out.println("Enter 2 to edit contact");
+				System.out.println("Enter 3 to see addressbook details");
+				System.out.println("Enter 4 to delete contact");
+				System.out.println("Enter 5 to exit");
 				System.out.println("Enter Choice");
 				option = in.nextInt();
 			}
@@ -56,15 +63,16 @@ public class AddressBookList {
 		else
 			addressBookMap.put(bookName, addressBook);
 	}
+
 	public void showDetails() {
-		if(addressBookMap.size() == 0)
+		if (addressBookMap.size() == 0)
 			System.out.println("No Address Book is present");
 		else {
 			for (int i = 0; i < addressList.size(); i++) {
 				AddressBook addressBook = addressList.get(i);
 				addressBook.showDetail();
+			}
 		}
-	}
 
-}
+	}
 }
