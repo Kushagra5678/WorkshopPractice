@@ -9,17 +9,17 @@ public class AddressBookMain {
 			Scanner in = new Scanner(System.in);
 			boolean b = false;
 			System.out.println("Welcome to Addressbook");
-	      
+
 			System.out.println("Enter 1 to open existing addressbook");
 			System.out.println("Enter 2 to open new addressbook");
 			System.out.println("Enter 3 to exit");
 			int option = in.nextInt();
-			while(option != 3) {
-				if(option == 1)
+			while (option != 3) {
+				if (option == 1)
 					addressBookList.openAddressBook();
-				else if(option == 2)
+				else if (option == 2)
 					addressBookList.newAddressBook();
-				else if(option == 3)
+				else if (option == 3)
 					break;
 				else
 					System.out.println("Enter Correct option");
