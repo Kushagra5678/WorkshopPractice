@@ -3,15 +3,17 @@ package com.practice.addressbook;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class AddressBook {
 	Scanner in = new Scanner(System.in);
-
+    static LinkedList<Contacts> contactList = new LinkedList<>();
 	Map<String, Contacts> contactMap = new HashMap<>();
 
 	public AddressBook() {
@@ -70,6 +72,7 @@ public class AddressBook {
 			System.out.println("This name is already present\n");
 		} else {
 			contactMap.put(name, person);
+			contactList.add(person);
 		}
 	}
 
@@ -150,8 +153,18 @@ public class AddressBook {
 		Boolean keyPresent = contactMap.containsKey(name);
 		if (keyPresent) {
 			contactMap.remove(name);
+			Contacts c = contactMap.get(name);
+			contactList.remove(c);
+
 		} else {
 			System.out.println("This name is not present in address book.");
 		}
+	}
+	public List<Contacts> searchPersonsByCity(String city) {
+		return contactList.stream().filter(person -> person.getCity().equals(city)).collect(Collectors.toList());
+	}
+
+	public List<Contacts> searchPersonsByState(String state) {
+		return contactList.stream().filter(person -> person.getState().equals(state)).collect(Collectors.toList());
 	}
 }
