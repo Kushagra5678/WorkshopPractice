@@ -99,4 +99,36 @@ public class AddressBookFileIOService {
 		}
 		return true;
 	}
+	
+//	public boolean writeJsonData(List<Contacts> contactList) {
+//		Gson gson = new Gson();
+//		String json = gson.toJson(contactList);
+//		try {
+//			FileWriter fileWriter = new FileWriter(SAMPLE_JSON_FILE_PATH);
+//			fileWriter.write(json);
+//			fileWriter.close();
+//			return true;
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			return false;
+//		}
+//	}
+//	
+//	public boolean readJsonFile(){
+//		try {
+//			Reader reader = Files.newBufferedReader(Paths.get(SAMPLE_JSON_FILE_PATH2));
+//			JsonParser jsonParser = new JsonParser();
+//			JsonElement obj = jsonParser.parse(reader);
+//			JsonArray contactList = (JsonArray) obj;
+//			System.out.println(contactList);
+//			
+//			return true;
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			return false;
+//		}
+//	}
+
 }

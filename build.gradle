@@ -29,4 +29,6 @@ dependencies {
     
     // https://mvnrepository.com/artifact/com.opencsv/opencsv
 	compile group: 'com.opencsv', name: 'opencsv', version: '5.2'
+	
+	compile 'com.google.code.gson:gson2.2.+'
 }
