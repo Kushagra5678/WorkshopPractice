@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 
 public class AddressBook {
 	Scanner in = new Scanner(System.in);
-    static LinkedList<Contacts> contactList = new LinkedList<>();
-	Map<String, Contacts> contactMap = new HashMap<>();
+	static LinkedList<Contacts> contactList = new LinkedList<>();
+	Map<String, Contacts> contactMap = new TreeMap<>();
 
 	public AddressBook() {
-		contactMap = new HashMap<>();
+		contactMap = new TreeMap<>();
 	}
 
 	public Map<String, Contacts> getContactMap() {
@@ -139,6 +139,7 @@ public class AddressBook {
 			Iterator iterator = set.iterator();
 			while (iterator.hasNext()) {
 				Map.Entry entry = (Map.Entry) iterator.next();
+				System.out.println("---------------");
 				System.out.println(entry.getValue());
 			}
 		}
@@ -160,6 +161,7 @@ public class AddressBook {
 			System.out.println("This name is not present in address book.");
 		}
 	}
+
 	public List<Contacts> searchPersonsByCity(String city) {
 		return contactList.stream().filter(person -> person.getCity().equals(city)).collect(Collectors.toList());
 	}
@@ -167,11 +169,25 @@ public class AddressBook {
 	public List<Contacts> searchPersonsByState(String state) {
 		return contactList.stream().filter(person -> person.getState().equals(state)).collect(Collectors.toList());
 	}
+
 	public int countPersonsByCity(String city) {
 		return contactList.stream().filter(person -> person.getCity().equals(city)).collect(Collectors.toList()).size();
 	}
 
 	public int countPersonsByState(String state) {
-		return contactList.stream().filter(person -> person.getState().equals(state)).collect(Collectors.toList()).size();
+		return contactList.stream().filter(person -> person.getState().equals(state)).collect(Collectors.toList())
+				.size();
+	}
+
+	public List<Contacts> sortPersonsByCity() {
+		return contactList.stream().sorted((a, b) -> a.getCity().compareTo(b.getCity())).collect(Collectors.toList());
+	}
+
+	public List<Contacts> sortPersonsByState() {
+		return contactList.stream().sorted((a, b) -> a.getState().compareTo(b.getState())).collect(Collectors.toList());
+	}
+
+	public List<Contacts> sortPersonsByZip() {
+		return contactList.stream().sorted((a, b) -> a.getZip().compareTo(b.getZip())).collect(Collectors.toList());
 	}
 }
